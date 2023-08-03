@@ -1,0 +1,67 @@
+%YAML 1.0
+# pvio::extra::YamlConfig
+
+# transform before output
+output:
+  q_bo: [ 0.0, 0.0, 0.0, 1.0 ] # x y z w
+  p_bo: [ 0.0, 0.0, 0.0 ] # x y z [m]
+
+# camera parameters
+camera:
+  noise: [
+    0.5, 0.0,
+    0.0, 0.5
+  ] # [pixel^2]
+  intrinsic: [595.7182282949835, 594.9814912688832, 295.23243453934515, 404.43474572668373] # fx fy cx cy
+  extrinsic:
+    q_bc: [-0.9999692444443744, -0.0006220141175192866, 0.002674494775940184, -0.007346450944383311] # x y z w
+    p_bc: [0.04067561, -0.01203952, -0.00129191 ] # x y z [m]
+
+# imu parameters
+imu:
+  noise:
+    cov_g: [
+      2.0897790366737560e-03, 0.0, 0.0,
+      0.0, 2.0897790366737560e-03, 0.0,
+      0.0, 0.0, 2.0897790366737560e-03
+    ] # [(rad/s/sqrt(hz))^2]
+    cov_a: [
+      3.0690310195074056e-02, 0.0, 0.0,
+      0.0, 3.0690310195074056e-02, 0.0,
+      0.0, 0.0, 3.0690310195074056e-02
+    ] # [(m/s^2/sqrt(hz))^2]
+    cov_bg: [
+      3.3686475741950929e-05, 0.0, 0.0,
+      0.0, 3.3686475741950929e-05, 0.0,
+      0.0, 0.0, 3.3686475741950929e-05
+    ] # [(rad/s^2/sqrt(hz))^2]
+    cov_ba: [
+      9.7833628333635959e-04, 0.0, 0.0,
+      0.0, 9.7833628333635959e-04, 0.0,
+      0.0, 0.0, 9.7833628333635959e-04
+    ] # [(m/s^3/sqrt(hz))^2]
+  extrinsic:
+    q_bi: [ 0.0, 0.0, 0.0, 1.0 ] # x y z w
+    p_bi: [ 0.0, 0.0, 0.0 ] # x y z [m]
+
+sliding_window_size: 8
+
+feature_tracker:
+  min_keypoint_distance: 25.0 # [px]
+  max_keypoint_detection: 150
+  max_init_frames: 60
+  max_frames: 20
+  predict_keypoints: true
+
+initializer:
+  keyframe_num: 8
+  keyframe_gap: 5
+  min_matches: 50
+  min_parallax: 10.0
+  min_triangulation: 20
+  min_landmarks: 30
+  refine_imu: true
+
+solver:
+  iteration_limit: 10
+  time_limit: 1.0e6 # [s]
