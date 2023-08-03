@@ -12,7 +12,10 @@ cd ..
 
 ```
 
+### demo
+- [B站](https://www.bilibili.com/video/BV1SV4y1i7tG/)
+
+
 ### ref
 - [rlp_vio](https://github.com/zju3dv/RLP_VIO)
-
 
