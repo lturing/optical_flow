@@ -1,0 +1,3 @@
+### test euroc
+./build/opticalFlow ./config/euroc.yaml /home/spurs/dataset/euroc/MH_02_easy/mav0/cam0
+
