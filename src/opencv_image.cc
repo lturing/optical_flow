@@ -126,8 +126,10 @@ void OpenCvImage::preprocess() {
     image_levels.clear();
     //grid_levels.clear();
     //interpolator_levels.clear();
-
-    buildOpticalFlowPyramid(image, image_pyramid, Size(21, 21), (int)level_num(), true);
+    
+    image_pyramid.push_back(image.clone());
+    //buildOpticalFlowPyramid(image, image_pyramid, Size(21, 21), (int)level_num(), true);
+    /*
     for (size_t l = 0; l <= level_num(); ++l) {
         image_levels.emplace_back(image_pyramid[l * 2].clone());
     }
@@ -136,6 +138,8 @@ void OpenCvImage::preprocess() {
         double sy = (image.rows - 1) / (image_levels[l].rows - 1);
         scale_levels.emplace_back(1.0 / sx, 1.0 / sy);
     }
+    */
+
     /*
     for (size_t l = 0; l <= level_num(); ++l) {
         grid_levels.emplace_back(image_levels[l].data, 0, image_levels[l].rows, 0, image_levels[l].cols);
